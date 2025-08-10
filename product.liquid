@@ -1,0 +1,11 @@
+<script type="application/ld+json" id="variant-json">
+{
+  {% for variant in product.variants %}
+
+    {% assign variation_description =  variant.metafields.custom.variation_description  | metafield_tag %}
+    "{{ variant.id }}": {
+      "description": {{ variation_description | json }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+}
+</script>
